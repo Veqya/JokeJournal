@@ -46,6 +46,8 @@ fun Project.configureAndroid() {
         testImplementation(libs.junit)
         androidTestImplementation(libs.androidx.test.ext.junit)
         androidTestImplementation(libs.espresso.core)
+        implementation(libs.hilt.android)
+        kapt(libs.hilt.android.compiler)
     }
 }
 
@@ -66,3 +68,9 @@ private fun DependencyHandler.`testImplementation`(dependencyNotation: Any): Dep
 
 private fun DependencyHandler.`androidTestImplementation`(dependencyNotation: Any): Dependency? =
     add("androidTestImplementation", dependencyNotation)
+
+private fun Project.`kapt`(configure: Action<org.jetbrains.kotlin.gradle.plugin.KaptExtension>): Unit =
+    (this as ExtensionAware).extensions.configure("kapt", configure)
+
+private fun DependencyHandler.`kapt`(dependencyNotation: Any): Dependency? =
+    add("kapt", dependencyNotation)
