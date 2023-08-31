@@ -1,5 +1,6 @@
 plugins {
     id("android-app-features")
+    alias(libs.plugins.org.jetbrains.kotlin.android)
 }
 
 android {
@@ -11,4 +12,9 @@ android {
 dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
+
+    androidTestImplementation(libs.androidx.navigation.testing)
+    implementation(libs.bundles.navigation.fragment.deps)
+
+    implementation(libs.androidx.navigation.fragment)
 }

@@ -18,11 +18,19 @@ appcompat = "1.6.1"
 kotlinx-coroutines-core = "1.7.3"
 material = "1.9.0"
 constraintlayout = "2.1.4"
+navigation-fragment-ktx = "2.7.1"
 room_version = "2.5.2"
 retrofit_version = "2.9.0"
 logging-interceptor = "4.11.0"
 
 [libraries]
+androidx-navigation-dynamic-features-fragment = { module = "androidx.navigation:navigation-dynamic-features-fragment", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-safe-args-gradle-plugin = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-testing = { module = "androidx.navigation:navigation-testing", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigation-fragment-ktx" }
+androidx-navigation-fragment = { group = "androidx.navigation", name = "navigation-fragment", version = "navigation-fragment-ktx" }
+
 androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room_version" }
 androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
@@ -56,4 +64,5 @@ com-android-library = { id = "com.android.library", version.ref = "agp" }
 
 [bundles]
 remote-deps = ["retrofit-core", "converter-gson", "logging-interceptor"]
+navigation-fragment-deps = ["androidx-navigation-dynamic-features-fragment", "androidx-navigation-fragment-ktx", "androidx-navigation-ui-ktx", "androidx-navigation-fragment"]
 
