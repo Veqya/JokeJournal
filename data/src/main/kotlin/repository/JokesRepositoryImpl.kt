@@ -30,10 +30,8 @@ class JokesRepositoryImpl @Inject constructor(
         jokesDao.insertJoke(joke.toLocal())
     }
 
-    override suspend fun getLocalJokeById(id: Int): Flow<Joke> = withContext(dispatcher) {
-        jokesDao.getJokeById(id).map { jokeLocal ->
-            jokeLocal.toRemote()
-        }
+    override suspend fun getLocalJokeById(id: Int): Joke = withContext(dispatcher) {
+        jokesDao.getJokeById(id).toRemote()
     }
 
     override suspend fun getLocalJokes(): Flow<List<Joke>> = withContext(dispatcher) {

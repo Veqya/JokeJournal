@@ -9,6 +9,6 @@ interface JokesRepository {
     suspend fun deleteLocalJokeById(joke: Joke)
     suspend fun editLocalJoke(joke: Joke)
 
-    suspend fun getLocalJokeById(id: Int): Flow<Joke>
+    suspend fun getLocalJokeById(id: Int): Joke
     suspend fun getLocalJokes(): Flow<List<Joke>>
 }

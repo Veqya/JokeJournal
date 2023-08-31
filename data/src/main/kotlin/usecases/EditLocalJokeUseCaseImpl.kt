@@ -10,7 +10,8 @@ class EditLocalJokeUseCaseImpl @Inject constructor(
     private val jokesRepository: JokesRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : EditLocalJokeUseCase {
-    override suspend fun execute(joke: Joke) = with(dispatcher) {
-        jokesRepository.editLocalJoke(joke)
-    }
+    override suspend fun execute(id: Int, type: String, setup: String, punchline: String) =
+        with(dispatcher) {
+            jokesRepository.editLocalJoke(Joke(id, type, setup, punchline))
+        }
 }

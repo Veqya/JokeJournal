@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/jokeEditSave"
+        android:id="@+id/jokeEditMenu"
         android:icon="@drawable/baseline_save_24"
         android:title="@string/save"
         app:showAsAction="always" />
     <item
-        android:id="@+id/jokeEditMenu"
+        android:id="@+id/jokeDeleteMenu"
         android:icon="@drawable/baseline_delete_forever_24"
         android:title="@string/delete"
         app:showAsAction="always" />

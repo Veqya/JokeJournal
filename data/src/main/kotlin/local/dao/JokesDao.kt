@@ -11,7 +11,7 @@ import local.entities.JokeLocalDto
 @Dao
 interface JokesDao {
     @Query("SELECT * FROM jokes WHERE id = :id")
-    fun getJokeById(id: Int): Flow<JokeLocalDto>
+    fun getJokeById(id: Int): JokeLocalDto
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertJoke(joke: JokeLocalDto)

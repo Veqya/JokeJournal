@@ -8,7 +8,9 @@ import com.jokejournal.android.common.base.BaseFragment
 import com.jokejournal.android.common.base.BindingInitializer
 import com.jokejournal.android.databinding.FragmentJokesListBinding
 import com.jokejournal.android.ui.jokes.list.adapter.JokesListAdapter
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewModel>() {
     override val bindingInitializer: BindingInitializer = FragmentJokesListBinding::inflate
     override val viewModel: JokesListViewModel by hiltNavGraphViewModels(R.id.jokes_nav)
