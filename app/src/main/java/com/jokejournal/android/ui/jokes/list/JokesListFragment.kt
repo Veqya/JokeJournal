@@ -10,4 +10,12 @@ class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewMo
     override val bindingInitializer: BindingInitializer = FragmentJokesListBinding::inflate
     override val viewModel: JokesListViewModel by hiltNavGraphViewModels(R.id.jokes_nav)
 
+    override fun initViews(): Unit = with(viewBinding) {
+
+    }
+
+    override fun initCollectors(): Unit = with(viewModel) {
+
+    }
+
 }

@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/small_space"
+    android:layout_marginTop="@dimen/small_space"
+    android:layout_marginEnd="@dimen/small_space"
     android:background="@color/item_joke_bg"
     android:orientation="vertical"
     android:paddingBottom="@dimen/small_space">
