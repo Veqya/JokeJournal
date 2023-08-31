@@ -8,3 +8,7 @@ android {
         applicationId = "com.jokejournal.android"
     }
 }
+dependencies {
+    implementation(project(":domain"))
+    implementation(project(":data"))
+}
