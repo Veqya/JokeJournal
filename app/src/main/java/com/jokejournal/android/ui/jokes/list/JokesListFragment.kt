@@ -11,10 +11,13 @@ class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewMo
     override val viewModel: JokesListViewModel by hiltNavGraphViewModels(R.id.jokes_nav)
 
     override fun initViews(): Unit = with(viewBinding) {
-
+        fragmentJokesListFetchJoke.setOnClickListener {
+            viewModel.fetchRandomJokes()
+        }
     }
 
     override fun initCollectors(): Unit = with(viewModel) {
+        viewModel.collectLocalJokes {}
 
     }
 
