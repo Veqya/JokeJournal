@@ -14,7 +14,11 @@ class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewMo
     override val viewModel: JokesListViewModel by hiltNavGraphViewModels(R.id.jokes_nav)
     private val jokeListAdapter: JokesListAdapter by lazy {
         JokesListAdapter { joke ->
-
+            navController.navigate(
+                JokesListFragmentDirections.actionJokesListFragmentToJokesItemEditFragment(
+                    joke.id
+                )
+            )
         }
     }
 

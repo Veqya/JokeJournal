@@ -11,4 +11,16 @@
         <item name="android:gravity">center</item>
         <item name="android:background">@color/joke_item_text_row_bg</item>
     </style>
+
+    <style name="Joke.Item.Edit.Input" parent="ThemeOverlay.Material3.TextInputEditText">
+        <item name="android:layout_height">wrap_content</item>.
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/small_space</item>
+        <item name="android:layout_marginStart">@dimen/small_space</item>
+        <item name="android:layout_marginEnd">@dimen/small_space</item>
+        <item name="android:padding">@dimen/small_space</item>
+        <item name="android:gravity">center</item>
+        <item name="android:ems">10</item>
+        <item name="android:inputType">text</item>
+    </style>
 </resources>

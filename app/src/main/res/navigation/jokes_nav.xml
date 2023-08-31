@@ -22,5 +22,8 @@
         <action
             android:id="@+id/action_jokesItemEditFragment_to_jokesListFragment"
             app:destination="@id/jokesListFragment" />
+        <argument
+            android:name="jokeId"
+            app:argType="integer" />
     </fragment>
 </navigation>
