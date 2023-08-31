@@ -39,8 +39,4 @@ class JokesListViewModel @Inject constructor(
             saveLocalJokeUseCase.execute(getRandomRemoteJokeUseCase.execute())
         }
     }
-
-    fun collectLocalJokes(function: () -> Unit) {
-
-    }
 }

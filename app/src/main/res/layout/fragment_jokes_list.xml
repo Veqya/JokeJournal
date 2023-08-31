@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/small_space"
+        android:layout_margin="@dimen/medium_space"
         android:clickable="true"
         android:contentDescription="@string/add_random_joke"
         android:src="@android:drawable/ic_input_add" />
