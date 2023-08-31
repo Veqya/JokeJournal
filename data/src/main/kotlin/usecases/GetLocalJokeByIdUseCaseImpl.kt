@@ -4,20 +4,16 @@ import common.IoDispatcher
 import entities.remote.Joke
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
-import local.dao.JokesDao
-import local.entities.extensions.toRemote
+import repositories.JokesRepository
 import javax.inject.Inject
 
 class GetLocalJokeByIdUseCaseImpl @Inject constructor(
-    private val jokesDao: JokesDao,
+    private val jokesRepository: JokesRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher,
 ) : GetLocalJokeByIdUseCase {
     override suspend fun execute(id: Int): Flow<Joke> =
         withContext(dispatcher) {
-            jokesDao.getJokeById(id).map { jokeLocal ->
-                jokeLocal.toRemote()
-            }
+            jokesRepository.getLocalJokeById(id)
         }
 }

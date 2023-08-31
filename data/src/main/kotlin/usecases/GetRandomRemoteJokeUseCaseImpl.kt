@@ -4,15 +4,15 @@ import common.IoDispatcher
 import entities.remote.Joke
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
-import remote.services.JokesApi
+import repositories.JokesRepository
 import javax.inject.Inject
 
 class GetRandomRemoteJokeUseCaseImpl @Inject constructor(
-    private val api: JokesApi,
+    private val jokesRepository: JokesRepository,
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : GetRandomRemoteJokeUseCase {
     override suspend fun execute(): Joke = withContext(dispatcher) {
-        api.getRandomJoke()
+        jokesRepository.getRandomRemoteJoke()
     }
 
 }
