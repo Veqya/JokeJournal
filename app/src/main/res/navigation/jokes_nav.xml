@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/jokesListFragment"
-        android:name="com.jokejournal.android.JokesListFragment"
+        android:name="com.jokejournal.android.ui.jokes.list.JokesListFragment"
         android:label="fragment_jokes_list"
         tools:layout="@layout/fragment_jokes_list">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/jokesItemEditFragment"
-        android:name="com.jokejournal.android.JokesItemEditFragment"
+        android:name="com.jokejournal.android.ui.jokes.edit.JokesItemEditFragment"
         android:label="fragment_jokes_item_edit"
         tools:layout="@layout/fragment_jokes_item_edit">
         <action
