@@ -5,7 +5,7 @@ android_target_sdk = "34"
 android_version_code = "1"
 android_version_name = "1.0"
 converter-gson = "2.9.0"
-hilt-android = "2.45"
+hilt-android = "2.46"
 jvm_target = "1.8"
 
 agp = "8.1.1"
@@ -17,15 +17,21 @@ espresso-core = "3.5.1"
 appcompat = "1.6.1"
 material = "1.9.0"
 constraintlayout = "2.1.4"
-room = "2.5.2"
+room_version = "2.5.2"
+retrofit_version = "2.9.0"
+logging-interceptor = "4.11.0"
 
 [libraries]
-androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
-androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
-androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
-androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room" }
-converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "converter-gson" }
+androidx-room-ktx = { module = "androidx.room:room-ktx", version.ref = "room_version" }
+androidx-room-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room_version" }
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "room_version" }
+androidx-room-testing = { module = "androidx.room:room-testing", version.ref = "room_version" }
+
+retrofit-core = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit_version" }
+logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "logging-interceptor" }
+converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit_version" }
+
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
 hilt-android-compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt-android" }
@@ -47,4 +53,5 @@ hilt-android-plugin = { id = "com.google.dagger.hilt.android", version.ref = "hi
 com-android-library = { id = "com.android.library", version.ref = "agp" }
 
 [bundles]
+remote-deps = ["retrofit-core", "converter-gson", "logging-interceptor"]
 

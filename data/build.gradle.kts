@@ -33,6 +33,9 @@ android {
         jvmTarget = "1.8"
     }
 }
+kapt {
+    correctErrorTypes = true
+}
 
 dependencies {
     implementation(libs.androidx.room.runtime)
@@ -41,7 +44,6 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)
 
-    implementation(libs.kotlin.stdlib)
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
@@ -51,6 +53,8 @@ dependencies {
 
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
+
+    implementation(libs.bundles.remote.deps)
 
     implementation(project(":domain"))
 }
