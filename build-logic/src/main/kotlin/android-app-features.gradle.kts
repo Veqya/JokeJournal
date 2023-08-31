@@ -1,4 +1,4 @@
-import extensions.configureAndroid
+import extensions.configureAndroidApp
 
 plugins {
     id("com.android.application")
@@ -7,5 +7,5 @@ plugins {
     id("com.google.dagger.hilt.android")
 }
 
-configureAndroid()
+configureAndroidApp()
 
