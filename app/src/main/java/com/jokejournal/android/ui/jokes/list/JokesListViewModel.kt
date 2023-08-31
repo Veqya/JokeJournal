@@ -1,6 +1,5 @@
 package com.jokejournal.android.ui.jokes.list
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -33,9 +32,6 @@ class JokesListViewModel @Inject constructor(
 
     fun fetchRandomJokes() {
         viewModelScope.launch {
-            getRandomRemoteJokeUseCase.execute().let {
-                Log.e("fetchRandomJokes: ", it.toString())
-            }
             saveLocalJokeUseCase.execute(getRandomRemoteJokeUseCase.execute())
         }
     }
