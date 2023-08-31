@@ -18,4 +18,7 @@ interface JokesDao {
 
     @Delete
     fun deleteJoke(joke: JokeLocalDto)
+
+    @Query("SELECT * FROM jokes")
+    fun getLocalJokes(): Flow<List<JokeLocalDto>>
 }
