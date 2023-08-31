@@ -2,4 +2,6 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="item_joke_bg">#DAEFF8</color>
+    <color name="joke_item_text_row_bg">#E3F1F6</color>
 </resources>

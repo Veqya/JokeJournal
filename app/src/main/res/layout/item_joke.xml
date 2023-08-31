@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/item_joke_bg"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/small_space">
+
+    <TextView
+        android:id="@+id/itemJokeType"
+        style="@style/Joke.Item.TextRow"
+        tools:text="Type" />
+
+    <TextView
+        android:id="@+id/itemJokeSetup"
+        style="@style/Joke.Item.TextRow"
+        tools:text="Setup" />
+
+    <TextView
+        android:id="@+id/itemJokePunchline"
+        style="@style/Joke.Item.TextRow"
+        tools:text="Punchline" />
+
+</LinearLayout>
