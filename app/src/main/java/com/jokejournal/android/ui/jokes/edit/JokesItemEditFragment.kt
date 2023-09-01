@@ -1,11 +1,13 @@
 package com.jokejournal.android.ui.jokes.edit
 
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.jokejournal.android.R
 import com.jokejournal.android.common.base.BaseFragment
 import com.jokejournal.android.common.base.BindingInitializer
 import com.jokejournal.android.databinding.FragmentJokesItemEditBinding
+import com.jokejournal.android.utils.setTextIfDifferent
 import dagger.hilt.android.AndroidEntryPoint
 import entities.remote.CommonState
 
@@ -32,15 +34,21 @@ class JokesItemEditFragment : BaseFragment<FragmentJokesItemEditBinding, JokesIt
                 true
             }
         }
-        viewModel.getJokeById(args.jokeId) { joke ->
-            fragmentJokesItemEditTypeInput.setText(joke.type)
-            fragmentJokesItemEditSetupInput.setText(joke.setup)
-            fragmentJokesItemEditPunchlineInput.setText(joke.punchline)
+        viewModel.initLocalJokeById(args.jokeId)
+
+        fragmentJokesItemEditTypeInput.addTextChangedListener { text ->
+            viewModel.updateJokeTypeState(text.toString())
+        }
+        fragmentJokesItemEditSetupInput.addTextChangedListener { text ->
+            viewModel.updateSetupTypeState(text.toString())
+        }
+        fragmentJokesItemEditPunchlineInput.addTextChangedListener { text ->
+            viewModel.updatePunchlineState(text.toString())
         }
     }
 
-    override fun initCollectors(): Unit = with(viewModel) {
-        collectWithLifecycle(state) { state ->
+    override fun initCollectors(): Unit = with(viewBinding) {
+        collectWithLifecycle(viewModel.state) { state ->
             when (state) {
                 CommonState.NORMAL -> {}
                 CommonState.NAVIGATE_UP -> {
@@ -50,6 +58,12 @@ class JokesItemEditFragment : BaseFragment<FragmentJokesItemEditBinding, JokesIt
                 else -> throw IllegalStateException("Unknown state Other Profile: $state")
             }
         }
+        collectWithLifecycle(viewModel.jokeUiState) { jokeUiState ->
+            jokeUiState?.let { state ->
+                fragmentJokesItemEditTypeInput.setTextIfDifferent(state.type)
+                fragmentJokesItemEditSetupInput.setTextIfDifferent(jokeUiState.setup)
+                fragmentJokesItemEditPunchlineInput.setTextIfDifferent(jokeUiState.punchline)
+            }
+        }
     }
-
 }
