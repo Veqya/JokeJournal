@@ -1,4 +1,4 @@
-package com.jokejournal.data
+package com.jokejournal.data.remote.repo
 
 import entities.remote.Joke
 import junit.framework.TestCase.assertEquals
@@ -11,14 +11,16 @@ import org.mockito.Mock
 import org.mockito.Mockito
 import org.mockito.junit.MockitoJUnitRunner
 import repositories.JokesRepository
+import usecases.GetLocalJokeByIdUseCase
 import usecases.GetLocalJokeByIdUseCaseImpl
 
 @RunWith(MockitoJUnitRunner::class)
-class GetLocalJokeByIdUseCaseImplTest {
+class RemoteRepoTest {
+
     @Mock
     lateinit var jokesRepository: JokesRepository
 
-    private lateinit var useCase: GetLocalJokeByIdUseCaseImpl
+    private lateinit var useCase: GetLocalJokeByIdUseCase
 
     @Before
     fun setUp() {
