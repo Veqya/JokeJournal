@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="item_joke_bg">#002535</color>
+    <color name="joke_item_text_row_bg">#1C2A2F</color>
+</resources>
