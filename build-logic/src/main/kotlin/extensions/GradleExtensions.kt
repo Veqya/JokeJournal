@@ -2,6 +2,7 @@ package extensions
 
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import gradle.kotlin.dsl.accessors._413dc65bf5b6149009f209d8dbdf3031.runtimeOnly
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Action
 import org.gradle.api.Project
@@ -92,10 +93,13 @@ fun Project.configureAndroidLib() {
         implementation(libs.core.ktx)
         implementation(libs.appcompat)
         implementation(libs.material)
-        
+
         testImplementation(libs.junit)
         androidTestImplementation(libs.androidx.test.ext.junit)
         androidTestImplementation(libs.espresso.core)
+
+        runtimeOnly("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
 
         implementation(libs.hilt.android)
         kapt(libs.hilt.android.compiler)

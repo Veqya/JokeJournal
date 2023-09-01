@@ -1,5 +1,6 @@
 package com.jokejournal.android.ui.jokes.list
 
+import androidx.core.view.isVisible
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -33,6 +34,7 @@ class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewMo
 
     override fun initCollectors(): Unit = with(viewModel) {
         collectWithLifecycle(localJokes) { jokes ->
+            viewBinding.fragmentJokesListNoJokes.isVisible = jokes?.isEmpty() == true
             jokeListAdapter.submitList(jokes)
         }
     }
