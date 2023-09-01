@@ -1,15 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.jokes.list.JokesListFragment">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragmentJokesListToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:title="@string/fragment_jokes_list_toolbar_title" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/fragmentJokesList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_joke" />
+        tools:listitem="@layout/item_joke"
+        android:layout_marginTop="?attr/actionBarSize" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fragmentJokesListFetchJoke"
@@ -34,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        android:textSize="@dimen/no_jokes_tv_size"
-        android:text="@string/fragment_jokes_list_no_jokes_text" />
+        android:text="@string/fragment_jokes_list_no_jokes_text"
+        android:textSize="@dimen/no_jokes_tv_size" />
 
 </FrameLayout>

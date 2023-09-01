@@ -8,4 +8,6 @@
     <string name="setup">Setup</string>
     <string name="punchline">Punchline</string>
     <string name="fragment_jokes_list_no_jokes_text">Jokes is empty please add</string>
+    <string name="fragment_jokes_item_edit_toolbar_title">Edit Joke</string>
+    <string name="fragment_jokes_list_toolbar_title">Joke List</string>
 </resources>

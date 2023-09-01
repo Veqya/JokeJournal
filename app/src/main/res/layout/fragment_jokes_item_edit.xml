@@ -11,6 +11,7 @@
         android:id="@+id/fragmentJokesItemEditToolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:title="@string/fragment_jokes_item_edit_toolbar_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
