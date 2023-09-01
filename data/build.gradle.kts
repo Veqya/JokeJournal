@@ -13,6 +13,8 @@ dependencies {
     implementation(libs.androidx.room.ktx)
     testImplementation(libs.androidx.room.testing)
 
+    testImplementation(libs.mockito.core)
+
     implementation(libs.bundles.remote.deps)
 
     implementation(project(":domain"))
