@@ -1,5 +1,6 @@
 package com.jokejournal.android.ui.jokes.list
 
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -10,6 +11,7 @@ import com.jokejournal.android.common.base.BindingInitializer
 import com.jokejournal.android.databinding.FragmentJokesListBinding
 import com.jokejournal.android.ui.jokes.list.adapter.JokesListAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import entities.remote.CommonState
 
 @AndroidEntryPoint
 class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewModel>() {
@@ -36,6 +38,31 @@ class JokesListFragment : BaseFragment<FragmentJokesListBinding, JokesListViewMo
         collectWithLifecycle(localJokes) { jokes ->
             viewBinding.fragmentJokesListNoJokes.isVisible = jokes?.isEmpty() == true
             jokeListAdapter.submitList(jokes)
+        }
+
+        collectWithLifecycle(state) { state ->
+            when (state) {
+                CommonState.NORMAL -> {
+                    viewBinding.fragmentJokesListProgress.isVisible = false
+                }
+
+                CommonState.PROGRESS -> {
+                    viewBinding.fragmentJokesListProgress.isVisible = true
+                }
+
+                CommonState.NO_CONNECTION -> {
+                    // some checking in feature
+                }
+
+                else -> throw IllegalStateException("Unknown state Other Profile: $state")
+            }
+        }
+
+        collectWithLifecycle(error) { error ->
+            error?.message?.let { message ->
+                Toast.makeText(requireContext(), message, Toast.LENGTH_SHORT).show()
+                viewModel.resetError()
+            }
         }
     }
 

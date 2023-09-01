@@ -1,6 +1,8 @@
 package repository
 
 import common.IoDispatcher
+import common.utils.safeApiCall
+import entities.remote.ActionResult
 import entities.remote.Joke
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -18,8 +20,8 @@ class JokesRepositoryImpl @Inject constructor(
     private val jokesDao: JokesDao,
     private val api: JokesApi,
 ) : JokesRepository {
-    override suspend fun getRandomRemoteJoke(): Joke = withContext(dispatcher) {
-        api.getRandomJoke()
+    override suspend fun getRandomRemoteJoke(): ActionResult<Joke> = withContext(dispatcher) {
+        safeApiCall { api.getRandomJoke() }
     }
 
     override suspend fun saveLocalJoke(joke: Joke) = withContext(dispatcher) {

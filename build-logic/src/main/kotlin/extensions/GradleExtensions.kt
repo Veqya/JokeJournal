@@ -98,7 +98,7 @@ fun Project.configureAndroidLib() {
         androidTestImplementation(libs.androidx.test.ext.junit)
         androidTestImplementation(libs.espresso.core)
 
-        runtimeOnly("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+        runtimeOnly(libs.androidx.lifecycle.viewmodel.ktx)
 
 
         implementation(libs.hilt.android)

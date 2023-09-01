@@ -16,5 +16,7 @@ dependencies {
     androidTestImplementation(libs.androidx.navigation.testing)
     implementation(libs.bundles.navigation.fragment.deps)
 
+    implementation(libs.bundles.remote.deps)
+
     implementation(libs.androidx.navigation.fragment)
 }

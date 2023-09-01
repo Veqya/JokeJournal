@@ -3,6 +3,7 @@ package entities.remote
 enum class CommonState {
     NORMAL,
     PROGRESS,
-    ERROR,
+    NO_CONNECTION,
+    NOT_FOUND,
     NAVIGATE_UP
 }
