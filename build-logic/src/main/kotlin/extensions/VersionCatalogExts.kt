@@ -19,4 +19,4 @@ internal val Project.ANDROID_TARGET_SDK_VERSION get() = versionInt("android_targ
 internal val Project.ANDROID_VERSION_CODE get() = versionInt("android_version_code")
 internal val Project.ANDROID_VERSION_NAME get() = version("android_version_name")
 internal val Project.JVM_TARGET get() = version("jvm_target")
-internal val Project.COMPILE_TARGET get() = JavaVersion.VERSION_11
+internal val Project.COMPILE_TARGET get() = JavaVersion.VERSION_1_8

@@ -2,7 +2,6 @@ package extensions
 
 import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
-import gradle.kotlin.dsl.accessors._413dc65bf5b6149009f209d8dbdf3031.runtimeOnly
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Action
 import org.gradle.api.Project
@@ -135,3 +134,6 @@ private fun DependencyHandler.`kapt`(dependencyNotation: Any): Dependency? =
 
 fun LibraryExtension.`kotlinOptionsAnndroidLib`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions>): Unit =
     (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
+
+fun DependencyHandler.`runtimeOnly`(dependencyNotation: Any): Dependency? =
+    add("runtimeOnly", dependencyNotation)
