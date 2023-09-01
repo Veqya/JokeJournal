@@ -1,7 +1,5 @@
 package usecases
 
-import entities.remote.Joke
-
 interface EditLocalJokeUseCase {
-    suspend fun execute(joke: Joke)
+    suspend fun execute(id: Int, type: String, setup: String, punchline: String)
 }

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.jokes.edit.JokesItemEditFragment">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/fragmentJokesItemEditToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:menu="@menu/joke_edit_menu"
+        app:navigationIcon="@drawable/baseline_arrow_back_new_24" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/fragmentJokesItemEditTypeInput"
+                style="@style/Joke.Item.Edit.Input"
+                android:layout_marginTop="@dimen/medium_space"
+                android:gravity="center"
+                android:hint="@string/type" />
+
+            <EditText
+                android:id="@+id/fragmentJokesItemEditSetupInput"
+                style="@style/Joke.Item.Edit.Input"
+                android:hint="@string/setup" />
+
+            <EditText
+                android:id="@+id/fragmentJokesItemEditPunchlineInput"
+                style="@style/Joke.Item.Edit.Input"
+                android:hint="@string/punchline" />
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

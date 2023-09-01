@@ -1,20 +1,19 @@
 plugins {
-    id("android-features")
+    id("android-lib-features")
 }
+
 android {
     namespace = "com.jokejournal.data"
 }
 
 dependencies {
-    //remote
-    implementation(libs.bundles.remote.deps)
+    implementation(libs.androidx.room.runtime)
+    annotationProcessor(libs.androidx.room.compiler)
+    kapt(libs.androidx.room.room.compiler)
+    implementation(libs.androidx.room.ktx)
+    testImplementation(libs.androidx.room.testing)
 
-    //local
-    implementation(libs.room.runtime)
-    annotationProcessor(libs.room.compiler)
-    implementation(libs.room.ktx)
-    testImplementation(libs.room.testing)
-    kapt(libs.room.compiler)
+    implementation(libs.bundles.remote.deps)
 
     implementation(project(":domain"))
 }

@@ -15,5 +15,5 @@ dependencyResolutionManagement {
 rootProject.name = "JokeJournal"
 include(":app")
 include(":domain")
-include(":data")
 includeBuild("build-logic")
+include(":data")

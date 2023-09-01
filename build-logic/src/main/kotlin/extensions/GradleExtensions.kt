@@ -1,6 +1,8 @@
 package extensions
 
+import com.android.build.gradle.LibraryExtension
 import com.android.build.gradle.internal.dsl.BaseAppModuleExtension
+import gradle.kotlin.dsl.accessors._413dc65bf5b6149009f209d8dbdf3031.runtimeOnly
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Action
 import org.gradle.api.Project
@@ -9,8 +11,8 @@ import org.gradle.api.artifacts.dsl.DependencyHandler
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.dependencies
 
-fun Project.configureAndroid() {
-    android {
+fun Project.configureAndroidApp() {
+    androidApp {
         compileSdk = ANDROID_COMPILE_SDK_VERSION
         defaultConfig {
             minSdk = ANDROID_MIN_SDK_VERSION
@@ -34,10 +36,15 @@ fun Project.configureAndroid() {
             sourceCompatibility = COMPILE_TARGET
             targetCompatibility = COMPILE_TARGET
         }
-        kotlinOptions {
+        kotlinOptionsAndroidApp {
             jvmTarget = JVM_TARGET
         }
     }
+
+    kapt {
+        correctErrorTypes = true
+    }
+
     dependencies {
         implementation(libs.core.ktx)
         implementation(libs.appcompat)
@@ -51,13 +58,64 @@ fun Project.configureAndroid() {
     }
 }
 
+fun Project.configureAndroidLib() {
+    androidLib {
+        compileSdk = ANDROID_COMPILE_SDK_VERSION
+        defaultConfig {
+            minSdk = ANDROID_MIN_SDK_VERSION
+            testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+            consumerProguardFiles("consumer-rules.pro")
+        }
+
+        buildTypes {
+            release {
+                isMinifyEnabled = false
+                proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+                )
+            }
+        }
+        compileOptions {
+            sourceCompatibility = COMPILE_TARGET
+            targetCompatibility = COMPILE_TARGET
+        }
+        kotlinOptionsAnndroidLib {
+            jvmTarget = JVM_TARGET
+        }
+    }
+
+    kapt {
+        correctErrorTypes = true
+    }
+
+    dependencies {
+        implementation(libs.core.ktx)
+        implementation(libs.appcompat)
+        implementation(libs.material)
+
+        testImplementation(libs.junit)
+        androidTestImplementation(libs.androidx.test.ext.junit)
+        androidTestImplementation(libs.espresso.core)
+
+        runtimeOnly(libs.androidx.lifecycle.viewmodel.ktx)
+
+
+        implementation(libs.hilt.android)
+        kapt(libs.hilt.android.compiler)
+    }
+}
+
 private val Project.`libs`: LibrariesForLibs
     get() = (this as ExtensionAware).extensions.getByName("libs") as LibrariesForLibs
 
-private fun Project.android(configure: Action<BaseAppModuleExtension>): Unit =
+private fun Project.androidApp(configure: Action<BaseAppModuleExtension>): Unit =
     (this as ExtensionAware).extensions.configure("android", configure)
 
-private fun BaseAppModuleExtension.`kotlinOptions`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions>): Unit =
+private fun Project.androidLib(configure: Action<LibraryExtension>): Unit =
+    (this as ExtensionAware).extensions.configure("android", configure)
+
+private fun BaseAppModuleExtension.`kotlinOptionsAndroidApp`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions>): Unit =
     (this as ExtensionAware).extensions.configure("kotlinOptions", configure)
 
 private fun DependencyHandler.`implementation`(dependencyNotation: Any): Dependency? =
@@ -74,3 +132,6 @@ private fun Project.`kapt`(configure: Action<org.jetbrains.kotlin.gradle.plugin.
 
 private fun DependencyHandler.`kapt`(dependencyNotation: Any): Dependency? =
     add("kapt", dependencyNotation)
+
+fun LibraryExtension.`kotlinOptionsAnndroidLib`(configure: Action<org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions>): Unit =
+    (this as ExtensionAware).extensions.configure("kotlinOptions", configure)

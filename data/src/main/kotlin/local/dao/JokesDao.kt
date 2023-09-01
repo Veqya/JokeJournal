@@ -5,16 +5,20 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 import local.entities.JokeLocalDto
 
 @Dao
 interface JokesDao {
     @Query("SELECT * FROM jokes WHERE id = :id")
-    suspend fun getJokeById(id: Int): JokeLocalDto?
+    fun getJokeById(id: Int): JokeLocalDto
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertJoke(joke: JokeLocalDto)
+    fun insertJoke(joke: JokeLocalDto)
 
     @Delete
-    suspend fun deleteJoke(joke: JokeLocalDto)
+    fun deleteJoke(joke: JokeLocalDto)
+
+    @Query("SELECT * FROM jokes")
+    fun getLocalJokes(): Flow<List<JokeLocalDto>>
 }
